@@ -1,0 +1,25 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "forkify project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danprzy/Forkify-App.git"
+  },
+  "author": "Danuta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danprzy/Forkify-App/issues"
+  },
+  "homepage": "https://github.com/danprzy/Forkify-App#readme",
+  "devDependencies": {
+    "webpack": "^4.26.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
