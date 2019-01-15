@@ -7,7 +7,8 @@ export const clearInput = () => {
 };
 export const clearResults = () => {
     elements.searchResList.innerHTML = '';
-}
+    elements.searchResPages.innerHTML = '';
+};
 // 'pasta with tomato spinach'
 // acc: 0 / acc + cur.lengh = 5 / new Title = ['pasta']
 // acc: 5 / acc + cur.lengh = 9 / new Title = ['pasta', 'with']
@@ -31,7 +32,7 @@ const limitRecipeTitle = (title, limit = 37) => {
 
 const renderRecipe = recipe => {
     const markup = `
-	<li>
+    <li>
                     <a class="results__link" href="#${recipe.recipe_id}">
                         <figure class="results__fig">
                             <img src="${recipe.image_url}" alt="${recipe.title}">
@@ -48,8 +49,45 @@ const renderRecipe = recipe => {
 
 
 };
+//type: 'prev' or 'next'
+const createButton = (page, type) => `
+    <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
+        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+        <svg class="search__icon">
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+        </svg>
+    </button>
+`;
 
-export const renderResults = recipes => {
+
+const renderButtons = (page, numResults, resPerPage) => {
+    const pages = Math.ceil(numResults / resPerPage);
+
+    let button;
+    if (page === 1 && pages > 1) {
+        // only button to go to next page
+        button = createButton(page, 'next');
+    } else if (page < pages) {
+        // both buttons
+        button = `
+        ${createButton(page, 'prev')}
+        ${createButton(page, 'next')}
+        `;
+    } else if (page === pages && pages > 1) {
+        // only button to go to prev page
+        button = createButton(page, 'prev');
+    }
+    elements.searchResPages.insertAdjacentHTML('afterbegin', button);
+
+};
+
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+    // render results of current page
     //console.log(recipes);
-    recipes.forEach(renderRecipe);
+    const start = (page - 1) * resPerPage;
+    const end = page * resPerPage;
+    recipes.slice(start, end).forEach(renderRecipe); // it is the array of all the recipes
+
+    // render pagionation button
+    renderButtons(page, recipes.length, resPerPage);
 };
