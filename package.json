@@ -33,6 +33,7 @@
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-    "dotenv-webpack": "^1.5.7"
+    "dotenv-webpack": "^1.5.7",
+    "uniqid": "^5.0.3"
   }
 }
