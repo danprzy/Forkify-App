@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development --open",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,7 @@
   },
   "author": "Danuta",
   "license": "ISC",
+  "homepage": "https://danprzy.github.io/Forkify-App/",
   "bugs": {
     "url": "https://github.com/danprzy/Forkify-App/issues"
   },
@@ -34,6 +36,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "dotenv-webpack": "^1.5.7",
+    "gh-pages": "^2.0.1",
     "uniqid": "^5.0.3"
   }
 }
