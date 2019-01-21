@@ -24,7 +24,7 @@ export const highlightSelected = id => {
 // acc: 9 / acc + cur.lengh = 15 / new Title = ['pasta', 'with', 'tomato']
 // acc: 15 / acc + cur.lengh = 18 / new Title = ['pasta', 'with', 'tomato']
 
-const limitRecipeTitle = (title, limit = 37) => {
+export const limitRecipeTitle = (title, limit = 37) => {
     const newTitle = [];
     if (title.length > limit) {
         title.split(' ').reduce((acc, cur) => {
