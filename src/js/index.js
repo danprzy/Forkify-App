@@ -14,7 +14,7 @@ import { elements, renderLoader, clearLoader } from './views/base';
 // Liked recipes
 
 const state = {};
-window.state = state;
+
 
 /* Search controler */
 const controlSearch = async () => {
@@ -64,17 +64,13 @@ elements.searchResPages.addEventListener('click', e => {
 
 });
 
-//const search = new Search('pizza');
-//console.log(search);
-//search.getResults();
 
 /* Recipe controler */
-//r.getRecipe();
-//console.log(r);
+
 const controlRecipe = async () => {
     // get Id from url
     const id = window.location.hash.replace('#', '');
-    console.log(id);
+
 
     if (id) {
         // prepere UI for changes
@@ -103,12 +99,12 @@ const controlRecipe = async () => {
             // render recipe
             clearLoader();
             recipeView.renderRecipe(
-            	state.recipe,
-            	state.likes.isLiked(id)
+                state.recipe,
+                state.likes.isLiked(id)
             );
 
         } catch (err) {
-        	console.log(err);
+            console.log(err);
             alert('Error processing recipe!');
         }
     }
@@ -149,7 +145,6 @@ elements.shopping.addEventListener('click', e => {
 });
 
 /* Like controler */
-// for testing
 
 
 const controlLike = () => {
@@ -170,7 +165,6 @@ const controlLike = () => {
         likesView.toggleLikeBtn(true);
         // add like to UI list
         likesView.renderLike(newLike);
-        
         // User has liked current recipe
     } else {
         // remove like from the state
@@ -179,23 +173,22 @@ const controlLike = () => {
         likesView.toggleLikeBtn(false);
         // remove like from UI list
         likesView.deleteLike(currentID);
-
     }
-likesView.toggleLikeMenu(state.likes.getNumLikes());
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 // Reastore liked recipe on page load
 window.addEventListener('load', () => {
-	state.likes = new Likes();
+    state.likes = new Likes();
 
-	// restore likes
-	state.likes.readStorage();
-	
-	// togle like menu button
-	likesView.toggleLikeMenu(state.likes.getNumLikes());
+    // restore likes
+    state.likes.readStorage();
 
-	// render the existing likes
-	state.likes.likes.forEach(like => likesView.renderLike(like));
+    // togle like menu button
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+    // render the existing likes
+    state.likes.likes.forEach(like => likesView.renderLike(like));
 });
 
 
@@ -221,6 +214,3 @@ elements.recipe.addEventListener('click', e => {
     }
     // console.log(state.recipe);
 });
-
-
-window.l = new List();

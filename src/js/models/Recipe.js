@@ -57,8 +57,9 @@ export default class Recipe {
                 const arrCount = arrIng.slice(0, unitIndex);
                 
                 let count;
+                //const newCount = Math.round(count * 10000) / 10000;
                 if (arrCount.length === 1) {
-                    count = eval(arrIng[0].replace('-', '+')).toFixed(1);
+                    count = eval(arrIng[0].replace('-', '+')).toFixed(2);
 
                 } else {
                     count = eval(arrIng.slice(0, unitIndex).join('+'));
@@ -66,6 +67,7 @@ export default class Recipe {
 
                 objIng = {
                 	//count: count.toFixed(2),
+                    //count: Math.round(count * 10) / 10)
                 	count,
                 	unit: arrIng[unitIndex],
                 	ingredient: arrIng.slice(unitIndex + 1).join(' ')
