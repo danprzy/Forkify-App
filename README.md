@@ -1,7 +1,7 @@
 # Forkify-App
 
 ## Live Demo
-
+https://danprzy.github.io/Forkify-App/
 
 ## Technologies
 * HTML5
